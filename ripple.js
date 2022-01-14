@@ -1,12 +1,12 @@
 window.addEventListener("load", function () {
   const startRipple = function (type, e) {
-    // Prevent double ripple events of different events
+    // 防止不同事件的双涟漪事件
     const prevEvent = e.target.getAttribute("data-event");
     if (prevEvent && prevEvent !== type) {
       return false;
     }
     e.target.setAttribute("data-event", type);
-    // Create a ripple element
+    // 创建涟漪元素
     const rippleWave = document.createElement("span");
     const rect = e.target.getBoundingClientRect();
     const maxSize = Math.sqrt(Math.pow(rect.width, 2) + Math.pow(rect.height, 2));
@@ -16,11 +16,11 @@ window.addEventListener("load", function () {
     rippleWave.style.left = `${e.clientX - rect.left - maxSize}px`;
     rippleWave.className = "es-ripple-wave";
     e.target.appendChild(rippleWave);
-    // Start ripple animation
+    // 开始涟漪动画
     setTimeout(() => {
       rippleWave.classList.add("es-ripple-wave-held");
     });
-    // End ripple animation
+    // 结束涟漪动画
     const releaseEvent = (type === "mousedown" ? "mouseup" : "touchend");
     const release = function () {
       document.removeEventListener(releaseEvent, release);
@@ -34,22 +34,22 @@ window.addEventListener("load", function () {
     }
     document.addEventListener(releaseEvent, release);
   }
-  // Register events
+  // 注册涟漪时间
   document.querySelectorAll(".es-ripple").forEach((el) => {
-    // Create a ripple container
+    // 创建涟漪容器
     let rippleContainer = el.querySelector(".es-ripple-container");
     if (!rippleContainer) {
       rippleContainer = document.createElement("div");
       rippleContainer.className = "es-ripple-container";
       el.appendChild(rippleContainer);
     }
-    // PC
+    // 电脑端
     rippleContainer.addEventListener("mousedown", function (e) {
       startRipple(e.type, e);
     }, { passive: true });
-    // Mobile
+    // 移动端
     rippleContainer.addEventListener("touchstart", function (e) {
-      [].slice.call(e.changedTouches).forEach(touch => {
+      Array.from(e.changedTouches).forEach(touch => {
         startRipple(e.type, touch);
       });
     }, { passive: true });
