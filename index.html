@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ripple demo</title>
+  <link rel="stylesheet" href="./ripple.min.css">
+  <script src="./ripple.min.js"></script>
+  <style>
+    html,
+    body {
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    .demo {
+      width: 200px;
+      height: 200px;
+      margin: 0 auto;
+      border: 1px solid #ccc;
+      margin-bottom: 10px;
+      --ripple-color: #000;
+    }
+
+    .demo1 {
+      border-radius: 50%;
+      width: 200px;
+      height: 200px;
+      margin: 0 auto;
+      border: 1px solid #ccc;
+      margin-bottom: 10px;
+      --ripple-color: red;
+    }
+
+    .demo2 {
+      --ripple-color: #fff;
+      width: 200px;
+      height: 36px;
+      margin: 0 auto;
+      margin-bottom: 10px;
+      background: #3c8cf5;
+      border: 0;
+      display: flex;
+      color: #fff;
+      align-items: center;
+      justify-content: center;
+      border-radius: 3px;
+      transition: background .3s ease-out;
+      outline: none;
+    }
+
+    .demo2:hover {
+      background: #569efd;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="demo es-ripple"></div>
+  <div class="demo1 es-ripple"></div>
+  <button class="demo2 es-ripple">Button</button>
+</body>
+
+</html>
